@@ -1,0 +1,823 @@
+      Do j=1,nz                   !i=1--->-(ml-1), i=ml--->0	  左边界
+        Do i=4,ml
+	        a11=vx(-ml+i+1,j,2)-vx(-ml+i,j,2)     !txx_x部分
+		      a12=vx(-ml+i+2,j,2)-vx(-ml+i-1,j,2)
+	        a13=vx(-ml+i+3,j,2)-vx(-ml+i-2,j,2)
+	        a14=vx(-ml+i+4,j,2)-vx(-ml+i-3,j,2)
+          d11=vz(-ml+i,j,2)-vz(-ml+i-1,j,2)
+          d12=vz(-ml+i+1,j,2)-vz(-ml+i-2,j,2)
+          d13=vz(-ml+i+2,j,2)-vz(-ml+i-3,j,2)
+          d14=vz(-ml+i+3,j,2)-vz(-ml+i-4,j,2)
+          e11=vy(-ml+i+1,j,2)-vy(-ml+i,j,2)  
+          e12=vy(-ml+i+2,j,2)-vy(-ml+i-1,j,2)
+          e13=vy(-ml+i+3,j,2)-vy(-ml+i-2,j,2)
+          e14=vy(-ml+i+4,j,2)-vy(-ml+i-3,j,2)
+	        s1=r1*C(1,1)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(1,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(1,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)   
+	        s2=(1.0-0.5*qx(i))*t1xi1(i,j,1)
+	        t1xi1(i,j,2)=(s1+s2)*qxd(i)
+          
+	        a21=vz(-ml+i,j,2)-vz(-ml+i,j-1,2)     !txx_z部分
+		      a22=vz(-ml+i,j+1,2)-vz(-ml+i,j-2,2)
+	        a23=vz(-ml+i,j+2,2)-vz(-ml+i,j-3,2)
+	        a24=vz(-ml+i,j+3,2)-vz(-ml+i,j-4,2)
+          d21=vx(-ml+i,j+1,2)-vx(-ml+i,j,2)
+          d22=vx(-ml+i,j+2,2)-vx(-ml+i,j-1,2)
+          d23=vx(-ml+i,j+3,2)-vx(-ml+i,j-2,2)
+          d24=vx(-ml+i,j+4,2)-vx(-ml+i,j-3,2)
+          e21=vy(-ml+i,j+1,2)-vy(-ml+i,j,2)
+          e22=vy(-ml+i,j+2,2)-vy(-ml+i,j-1,2)
+          e23=vy(-ml+i,j+3,2)-vy(-ml+i,j-2,2)
+          e24=vy(-ml+i,j+4,2)-vy(-ml+i,j-3,2)
+	        s1=r2*C(1,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(1,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(1,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=0.0 
+	        t1zi1(i,j,2)=t1zi1(i,j,1)+s1+s2
+	        txx(-ml+i,j,2)=t1xi1(i,j,2)+t1zi1(i,j,2)
+          
+	        a11=vx(-ml+i+1,j,2)-vx(-ml+i,j,2)
+		      a12=vx(-ml+i+2,j,2)-vx(-ml+i-1,j,2)
+	        a13=vx(-ml+i+3,j,2)-vx(-ml+i-2,j,2)
+	        a14=vx(-ml+i+4,j,2)-vx(-ml+i-3,j,2)
+          d11=vz(-ml+i,j,2)-vz(-ml+i-1,j,2)
+          d12=vz(-ml+i+1,j,2)-vz(-ml+i-2,j,2)
+          d13=vz(-ml+i+2,j,2)-vz(-ml+i-3,j,2)
+          d14=vz(-ml+i+3,j,2)-vz(-ml+i-4,j,2)
+          e11=vy(-ml+i+1,j,2)-vy(-ml+i,j,2)
+          e12=vy(-ml+i+2,j,2)-vy(-ml+i-1,j,2)
+          e13=vy(-ml+i+3,j,2)-vy(-ml+i-2,j,2)
+          e14=vy(-ml+i+4,j,2)-vy(-ml+i-3,j,2)
+	        s1=r1*C(1,3)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(3,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(3,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+		      s2=(1.0-0.5*qx(i))*t2xi1(i,j,1)
+	        t2xi1(i,j,2)=(s1+s2)*qxd(i)
+          
+	        a21=vz(-ml+i,j,2)-vz(-ml+i,j-1,2)
+		      a22=vz(-ml+i,j+1,2)-vz(-ml+i,j-2,2)
+	        a23=vz(-ml+i,j+2,2)-vz(-ml+i,j-3,2)
+	        a24=vz(-ml+i,j+3,2)-vz(-ml+i,j-4,2)
+          d21=vx(-ml+i,j+1,2)-vx(-ml+i,j,2)
+          d22=vx(-ml+i,j+2,2)-vx(-ml+i,j-1,2)
+          d23=vx(-ml+i,j+3,2)-vx(-ml+i,j-2,2)
+          d24=vx(-ml+i,j+4,2)-vx(-ml+i,j-3,2)
+          e21=vy(-ml+i,j+1,2)-vy(-ml+i,j,2)
+          e22=vy(-ml+i,j+2,2)-vy(-ml+i,j-1,2)
+          e23=vy(-ml+i,j+3,2)-vy(-ml+i,j-2,2)
+          e24=vy(-ml+i,j+4,2)-vy(-ml+i,j-3,2)
+	        s1=r2*C(3,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(3,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(3,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=0.0
+	        t2zi1(i,j,2)=t2zi1(i,j,1)+s1+s2
+	        tzz(-ml+i,j,2)=t2xi1(i,j,2)+t2zi1(i,j,2)
+          
+          a11=vx(-ml+i+1,j,2)-vx(-ml+i,j,2)  
+          a12=vx(-ml+i+2,j,2)-vx(-ml+i-1,j,2)
+          a13=vx(-ml+i+3,j,2)-vx(-ml+i-2,j,2)
+          a14=vx(-ml+i+4,j,2)-vx(-ml+i-3,j,2)
+	        d11=vz(-ml+i,j,2)-vz(-ml+i-1,j,2)
+		      d12=vz(-ml+i+1,j,2)-vz(-ml+i-2,j,2)
+	        d13=vz(-ml+i+2,j,2)-vz(-ml+i-3,j,2)
+	        d14=vz(-ml+i+3,j,2)-vz(-ml+i-4,j,2)
+          e11=vy(-ml+i+1,j,2)-vy(-ml+i,j,2)  
+          e12=vy(-ml+i+2,j,2)-vy(-ml+i-1,j,2)
+          e13=vy(-ml+i+3,j,2)-vy(-ml+i-2,j,2)
+          e14=vy(-ml+i+4,j,2)-vy(-ml+i-3,j,2)
+	        s1=r1*C(1,5)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(5,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(i))*t3xi1(i,j,1)
+	        t3xi1(i,j,2)=(s1+s2)*qxd(i)
+	        
+          a21=vz(-ml+i,j,2)-vz(-ml+i,j-1,2)
+          a22=vz(-ml+i,j+1,2)-vz(-ml+i,j-2,2)
+          a23=vz(-ml+i,j+2,2)-vz(-ml+i,j-3,2)
+          a24=vz(-ml+i,j+3,2)-vz(-ml+i,j-4,2)
+	        d21=vx(-ml+i,j+1,2)-vx(-ml+i,j,2)
+		      d22=vx(-ml+i,j+2,2)-vx(-ml+i,j-1,2)
+	        d23=vx(-ml+i,j+3,2)-vx(-ml+i,j-2,2)
+	        d24=vx(-ml+i,j+4,2)-vx(-ml+i,j-3,2)
+          e21=vy(-ml+i,j+1,2)-vy(-ml+i,j,2)
+          e22=vy(-ml+i,j+2,2)-vy(-ml+i,j-1,2)
+          e23=vy(-ml+i,j+3,2)-vy(-ml+i,j-2,2)
+          e24=vy(-ml+i,j+4,2)-vy(-ml+i,j-3,2)
+	        s1=r2*C(3,5)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,5)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=0.0
+	        t3zi1(i,j,2)=t3zi1(i,j,1)+s1+s2
+	        txz(-ml+i,j,2)=t3xi1(i,j,2)+t3zi1(i,j,2)
+          
+          a11=vx(-ml+i+1,j,2)-vx(-ml+i,j,2)     !txy_x部分
+          a12=vx(-ml+i+2,j,2)-vx(-ml+i-1,j,2)
+          a13=vx(-ml+i+3,j,2)-vx(-ml+i-2,j,2)
+          a14=vx(-ml+i+4,j,2)-vx(-ml+i-3,j,2)
+          d11=vz(-ml+i,j,2)-vz(-ml+i-1,j,2)
+          d12=vz(-ml+i+1,j,2)-vz(-ml+i-2,j,2)
+          d13=vz(-ml+i+2,j,2)-vz(-ml+i-3,j,2)
+          d14=vz(-ml+i+3,j,2)-vz(-ml+i-4,j,2)
+          e11=vy(-ml+i+1,j,2)-vy(-ml+i,j,2)  
+          e12=vy(-ml+i+2,j,2)-vy(-ml+i-1,j,2)
+          e13=vy(-ml+i+3,j,2)-vy(-ml+i-2,j,2)
+          e14=vy(-ml+i+4,j,2)-vy(-ml+i-3,j,2)
+          s1=r1*C(1,6)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,6)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(6,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)   
+          s2=(1.0-0.5*qx(i))*t4xi1(i,j,1)
+          t4xi1(i,j,2)=(s1+s2)*qxd(i)
+          
+          a21=vz(-ml+i,j,2)-vz(-ml+i,j-1,2)     !txy_z部分
+          a22=vz(-ml+i,j+1,2)-vz(-ml+i,j-2,2)
+          a23=vz(-ml+i,j+2,2)-vz(-ml+i,j-3,2)
+          a24=vz(-ml+i,j+3,2)-vz(-ml+i,j-4,2)
+          d21=vx(-ml+i,j+1,2)-vx(-ml+i,j,2)
+          d22=vx(-ml+i,j+2,2)-vx(-ml+i,j-1,2)
+          d23=vx(-ml+i,j+3,2)-vx(-ml+i,j-2,2)
+          d24=vx(-ml+i,j+4,2)-vx(-ml+i,j-3,2)
+          e21=vy(-ml+i,j+1,2)-vy(-ml+i,j,2)
+          e22=vy(-ml+i,j+2,2)-vy(-ml+i,j-1,2)
+          e23=vy(-ml+i,j+3,2)-vy(-ml+i,j-2,2)
+          e24=vy(-ml+i,j+4,2)-vy(-ml+i,j-3,2)
+          s1=r2*C(3,6)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,6)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,6)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=0.0 
+          t4zi1(i,j,2)=t4zi1(i,j,1)+s1+s2
+          txy(-ml+i,j,2)=t4xi1(i,j,2)+t4zi1(i,j,2)
+
+          a11=vx(-ml+i+1,j,2)-vx(-ml+i,j,2)       !tyz_x部分
+          a12=vx(-ml+i+2,j,2)-vx(-ml+i-1,j,2)
+          a13=vx(-ml+i+3,j,2)-vx(-ml+i-2,j,2)
+          a14=vx(-ml+i+4,j,2)-vx(-ml+i-3,j,2)
+          d11=vz(-ml+i,j,2)-vz(-ml+i-1,j,2)
+          d12=vz(-ml+i+1,j,2)-vz(-ml+i-2,j,2)
+          d13=vz(-ml+i+2,j,2)-vz(-ml+i-3,j,2)
+          d14=vz(-ml+i+3,j,2)-vz(-ml+i-4,j,2)
+          e11=vy(-ml+i+1,j,2)-vy(-ml+i,j,2)  
+          e12=vy(-ml+i+2,j,2)-vy(-ml+i-1,j,2)
+          e13=vy(-ml+i+3,j,2)-vy(-ml+i-2,j,2)
+          e14=vy(-ml+i+4,j,2)-vy(-ml+i-3,j,2)
+          s1=r1*C(1,4)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(4,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(4,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+          s2=(1.0-0.5*qx(i))*t5xi1(i,j,1)
+          t5xi1(i,j,2)=(s1+s2)*qxd(i)
+          
+          a21=vz(-ml+i,j,2)-vz(-ml+i,j-1,2)       !tyz_z部分
+          a22=vz(-ml+i,j+1,2)-vz(-ml+i,j-2,2)
+          a23=vz(-ml+i,j+2,2)-vz(-ml+i,j-3,2)
+          a24=vz(-ml+i,j+3,2)-vz(-ml+i,j-4,2)
+          d21=vx(-ml+i,j+1,2)-vx(-ml+i,j,2)
+          d22=vx(-ml+i,j+2,2)-vx(-ml+i,j-1,2)
+          d23=vx(-ml+i,j+3,2)-vx(-ml+i,j-2,2)
+          d24=vx(-ml+i,j+4,2)-vx(-ml+i,j-3,2)
+          e21=vy(-ml+i,j+1,2)-vy(-ml+i,j,2)
+          e22=vy(-ml+i,j+2,2)-vy(-ml+i,j-1,2)
+          e23=vy(-ml+i,j+3,2)-vy(-ml+i,j-2,2)
+          e24=vy(-ml+i,j+4,2)-vy(-ml+i,j-3,2)
+          s1=r2*C(3,4)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(4,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=0.0
+          t5zi1(i,j,2)=t5zi1(i,j,1)+s1+s2
+          tyz(-ml+i,j,2)=t5xi1(i,j,2)+t5zi1(i,j,2)
+        End Do
+      End Do
+      
+      Do j=1,nz
+        Do i=1,ml
+	        t1xi1(i,j,1)=t1xi1(i,j,2)
+	        t1zi1(i,j,1)=t1zi1(i,j,2)
+	        t2xi1(i,j,1)=t2xi1(i,j,2)
+	        t2zi1(i,j,1)=t2zi1(i,j,2)
+	        t3xi1(i,j,1)=t3xi1(i,j,2)
+	        t3zi1(i,j,1)=t3zi1(i,j,2)
+          t4xi1(i,j,1)=t4xi1(i,j,2)
+          t4zi1(i,j,1)=t4zi1(i,j,2)
+          t5xi1(i,j,1)=t5xi1(i,j,2)
+          t5zi1(i,j,1)=t5zi1(i,j,2)
+        End Do
+      End Do
+      
+      nx1=nx+ml+1
+      Do j=1,nz               !i=1--->-(ml-1), i=ml--->nx+1 右边界
+        Do i=ml,5,-1
+	        a11=vx(nx1-i+1,j,2)-vx(nx1-i,j,2)
+		      a12=vx(nx1-i+2,j,2)-vx(nx1-i-1,j,2)
+	        a13=vx(nx1-i+3,j,2)-vx(nx1-i-2,j,2)
+	        a14=vx(nx1-i+4,j,2)-vx(nx1-i-3,j,2)
+          d11=vz(nx1-i,j,2)-vz(nx1-i-1,j,2)
+          d12=vz(nx1-i+1,j,2)-vz(nx1-i-2,j,2)
+          d13=vz(nx1-i+2,j,2)-vz(nx1-i-3,j,2)
+          d14=vz(nx1-i+3,j,2)-vz(nx1-i-4,j,2)
+          e11=vy(nx1-i+1,j,2)-vy(nx1-i,j,2)
+          e12=vy(nx1-i+2,j,2)-vy(nx1-i-1,j,2)
+          e13=vy(nx1-i+3,j,2)-vy(nx1-i-2,j,2)
+          e14=vy(nx1-i+4,j,2)-vy(nx1-i-3,j,2)
+	        s1=r1*C(1,1)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(1,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(1,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(i))*t1xi2(i,j,1)
+	        t1xi2(i,j,2)=(s1+s2)*qxd(i)
+          
+	        a21=vz(nx1-i,j,2)-vz(nx1-i,j-1,2)
+		      a22=vz(nx1-i,j+1,2)-vz(nx1-i,j-2,2)
+	        a23=vz(nx1-i,j+2,2)-vz(nx1-i,j-3,2)
+	        a24=vz(nx1-i,j+3,2)-vz(nx1-i,j-4,2)
+          d21=vx(nx1-i,j+1,2)-vx(nx1-i,j,2)
+          d22=vx(nx1-i,j+2,2)-vx(nx1-i,j-1,2)
+          d23=vx(nx1-i,j+3,2)-vx(nx1-i,j-2,2)
+          d24=vx(nx1-i,j+4,2)-vx(nx1-i,j-3,2)
+          e21=vy(nx1-i,j+1,2)-vy(nx1-i,j,2)
+          e22=vy(nx1-i,j+2,2)-vy(nx1-i,j-1,2)
+          e23=vy(nx1-i,j+3,2)-vy(nx1-i,j-2,2)
+          e24=vy(nx1-i,j+4,2)-vy(nx1-i,j-3,2)
+	        s1=r2*C(1,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(1,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(1,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=0.0 
+	        t1zi2(i,j,2)=t1zi2(i,j,1)+s1+s2
+	        txx(nx1-i,j,2)=t1xi2(i,j,2)+t1zi2(i,j,2)
+          
+	        a11=vx(nx1-i+1,j,2)-vx(nx1-i,j,2)
+		      a12=vx(nx1-i+2,j,2)-vx(nx1-i-1,j,2)
+	        a13=vx(nx1-i+3,j,2)-vx(nx1-i-2,j,2)
+	        a14=vx(nx1-i+4,j,2)-vx(nx1-i-3,j,2)
+          d11=vz(nx1-i,j,2)-vz(nx1-i-1,j,2)
+          d12=vz(nx1-i+1,j,2)-vz(nx1-i-2,j,2)
+          d13=vz(nx1-i+2,j,2)-vz(nx1-i-3,j,2)
+          d14=vz(nx1-i+3,j,2)-vz(nx1-i-4,j,2)
+          e11=vy(nx1-i+1,j,2)-vy(nx1-i,j,2)
+          e12=vy(nx1-i+2,j,2)-vy(nx1-i-1,j,2)
+          e13=vy(nx1-i+3,j,2)-vy(nx1-i-2,j,2)
+          e14=vy(nx1-i+4,j,2)-vy(nx1-i-3,j,2)
+	        s1=r1*C(1,3)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(3,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(3,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+		      s2=(1.0-0.5*qx(i))*t2xi2(i,j,1)
+	        t2xi2(i,j,2)=(s1+s2)*qxd(i)
+          
+	        a21=vz(nx1-i,j,2)-vz(nx1-i,j-1,2)
+		      a22=vz(nx1-i,j+1,2)-vz(nx1-i,j-2,2)
+	        a23=vz(nx1-i,j+2,2)-vz(nx1-i,j-3,2)
+	        a24=vz(nx1-i,j+3,2)-vz(nx1-i,j-4,2)
+          d21=vx(nx1-i,j+1,2)-vx(nx1-i,j,2)
+          d22=vx(nx1-i,j+2,2)-vx(nx1-i,j-1,2)
+          d23=vx(nx1-i,j+3,2)-vx(nx1-i,j-2,2)
+          d24=vx(nx1-i,j+4,2)-vx(nx1-i,j-3,2)
+          e21=vy(nx1-i,j+1,2)-vy(nx1-i,j,2)
+          e22=vy(nx1-i,j+2,2)-vy(nx1-i,j-1,2)
+          e23=vy(nx1-i,j+3,2)-vy(nx1-i,j-2,2)
+          e24=vy(nx1-i,j+4,2)-vy(nx1-i,j-3,2)
+	        s1=r2*C(3,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(3,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(3,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=0.0
+	        t2zi2(i,j,2)=t2zi2(i,j,1)+s1+s2
+	        tzz(nx1-i,j,2)=t2xi2(i,j,2)+t2zi2(i,j,2)
+          
+          a11=vx(nx1-i+1,j,2)-vx(nx1-i,j,2)
+          a12=vx(nx1-i+2,j,2)-vx(nx1-i-1,j,2)
+          a13=vx(nx1-i+3,j,2)-vx(nx1-i-2,j,2)
+          a14=vx(nx1-i+4,j,2)-vx(nx1-i-3,j,2)
+	        d11=vz(nx1-i,j,2)-vz(nx1-i-1,j,2)
+		      d12=vz(nx1-i+1,j,2)-vz(nx1-i-2,j,2)
+	        d13=vz(nx1-i+2,j,2)-vz(nx1-i-3,j,2)
+	        d14=vz(nx1-i+3,j,2)-vz(nx1-i-4,j,2)
+          e11=vy(nx1-i+1,j,2)-vy(nx1-i,j,2)
+          e12=vy(nx1-i+2,j,2)-vy(nx1-i-1,j,2)
+          e13=vy(nx1-i+3,j,2)-vy(nx1-i-2,j,2)
+          e14=vy(nx1-i+4,j,2)-vy(nx1-i-3,j,2)
+	        s1=r1*C(1,5)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(5,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(i))*t3xi2(i,j,1)
+	        t3xi2(i,j,2)=(s1+s2)*qxd(i)
+	        
+          a21=vz(nx1-i,j,2)-vz(nx1-i,j-1,2)
+          a22=vz(nx1-i,j+1,2)-vz(nx1-i,j-2,2)
+          a23=vz(nx1-i,j+2,2)-vz(nx1-i,j-3,2)
+          a24=vz(nx1-i,j+3,2)-vz(nx1-i,j-4,2)
+	        d21=vx(nx1-i,j+1,2)-vx(nx1-i,j,2)
+		      d22=vx(nx1-i,j+2,2)-vx(nx1-i,j-1,2)
+	        d23=vx(nx1-i,j+3,2)-vx(nx1-i,j-2,2)
+	        d24=vx(nx1-i,j+4,2)-vx(nx1-i,j-3,2)
+          e21=vy(nx1-i,j+1,2)-vy(nx1-i,j,2)
+          e22=vy(nx1-i,j+2,2)-vy(nx1-i,j-1,2)
+          e23=vy(nx1-i,j+3,2)-vy(nx1-i,j-2,2)
+          e24=vy(nx1-i,j+4,2)-vy(nx1-i,j-3,2)
+	        s1=r2*C(3,5)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,5)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=0.0
+	        t3zi2(i,j,2)=t3zi2(i,j,1)+s1+s2
+	        txz(nx1-i,j,2)=t3xi2(i,j,2)+t3zi2(i,j,2)
+          
+          a11=vx(nx1-i+1,j,2)-vx(nx1-i,j,2)     !txy_x部分
+          a12=vx(nx1-i+2,j,2)-vx(nx1-i-1,j,2)
+          a13=vx(nx1-i+3,j,2)-vx(nx1-i-2,j,2)
+          a14=vx(nx1-i+4,j,2)-vx(nx1-i-3,j,2)
+          d11=vz(nx1-i,j,2)-vz(nx1-i-1,j,2)
+          d12=vz(nx1-i+1,j,2)-vz(nx1-i-2,j,2)
+          d13=vz(nx1-i+2,j,2)-vz(nx1-i-3,j,2)
+          d14=vz(nx1-i+3,j,2)-vz(nx1-i-4,j,2)
+          e11=vy(nx1-i+1,j,2)-vy(nx1-i,j,2)  
+          e12=vy(nx1-i+2,j,2)-vy(nx1-i-1,j,2)
+          e13=vy(nx1-i+3,j,2)-vy(nx1-i-2,j,2)
+          e14=vy(nx1-i+4,j,2)-vy(nx1-i-3,j,2)
+          s1=r1*C(1,6)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,6)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(6,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)   
+          s2=(1.0-0.5*qx(i))*t4xi2(i,j,1)
+          t4xi2(i,j,2)=(s1+s2)*qxd(i)
+          
+          a21=vz(nx1-i,j,2)-vz(nx1-i,j-1,2)     !txy_z部分
+          a22=vz(nx1-i,j+1,2)-vz(nx1-i,j-2,2)
+          a23=vz(nx1-i,j+2,2)-vz(nx1-i,j-3,2)
+          a24=vz(nx1-i,j+3,2)-vz(nx1-i,j-4,2)
+          d21=vx(nx1-i,j+1,2)-vx(nx1-i,j,2)
+          d22=vx(nx1-i,j+2,2)-vx(nx1-i,j-1,2)
+          d23=vx(nx1-i,j+3,2)-vx(nx1-i,j-2,2)
+          d24=vx(nx1-i,j+4,2)-vx(nx1-i,j-3,2)
+          e21=vy(nx1-i,j+1,2)-vy(nx1-i,j,2)
+          e22=vy(nx1-i,j+2,2)-vy(nx1-i,j-1,2)
+          e23=vy(nx1-i,j+3,2)-vy(nx1-i,j-2,2)
+          e24=vy(nx1-i,j+4,2)-vy(nx1-i,j-3,2)
+          s1=r2*C(3,6)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,6)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,6)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=0.0 
+          t4zi2(i,j,2)=t4zi2(i,j,1)+s1+s2
+          txy(-ml+i,j,2)=t4xi2(i,j,2)+t4zi2(i,j,2)
+
+          a11=vx(nx1-i+1,j,2)-vx(nx1-i,j,2)       !tyz_x部分
+          a12=vx(nx1-i+2,j,2)-vx(nx1-i-1,j,2)
+          a13=vx(nx1-i+3,j,2)-vx(nx1-i-2,j,2)
+          a14=vx(nx1-i+4,j,2)-vx(nx1-i-3,j,2)
+          d11=vz(nx1-i,j,2)-vz(nx1-i-1,j,2)
+          d12=vz(nx1-i+1,j,2)-vz(nx1-i-2,j,2)
+          d13=vz(nx1-i+2,j,2)-vz(nx1-i-3,j,2)
+          d14=vz(nx1-i+3,j,2)-vz(nx1-i-4,j,2)
+          e11=vy(nx1-i+1,j,2)-vy(nx1-i,j,2)  
+          e12=vy(nx1-i+2,j,2)-vy(nx1-i-1,j,2)
+          e13=vy(nx1-i+3,j,2)-vy(nx1-i-2,j,2)
+          e14=vy(nx1-i+4,j,2)-vy(nx1-i-3,j,2)
+          s1=r1*C(1,4)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(4,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(4,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+          s2=(1.0-0.5*qx(i))*t5xi2(i,j,1)
+          t5xi2(i,j,2)=(s1+s2)*qxd(i)
+          
+          a21=vz(nx1-i,j,2)-vz(nx1-i,j-1,2)       !tyz_z部分
+          a22=vz(nx1-i,j+1,2)-vz(nx1-i,j-2,2)
+          a23=vz(nx1-i,j+2,2)-vz(nx1-i,j-3,2)
+          a24=vz(nx1-i,j+3,2)-vz(nx1-i,j-4,2)
+          d21=vx(nx1-i,j+1,2)-vx(nx1-i,j,2)
+          d22=vx(nx1-i,j+2,2)-vx(nx1-i,j-1,2)
+          d23=vx(nx1-i,j+3,2)-vx(nx1-i,j-2,2)
+          d24=vx(nx1-i,j+4,2)-vx(nx1-i,j-3,2)
+          e21=vy(nx1-i,j+1,2)-vy(nx1-i,j,2)
+          e22=vy(nx1-i,j+2,2)-vy(nx1-i,j-1,2)
+          e23=vy(nx1-i,j+3,2)-vy(nx1-i,j-2,2)
+          e24=vy(nx1-i,j+4,2)-vy(nx1-i,j-3,2)
+          s1=r2*C(3,4)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(4,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=0.0
+          t5zi2(i,j,2)=t5zi2(i,j,1)+s1+s2
+          tyz(-ml+i,j,2)=t5xi2(i,j,2)+t5zi2(i,j,2)
+        End Do
+      End Do
+      
+      Do j=1,nz
+        Do i=1,ml
+	        t1xi2(i,j,1)=t1xi2(i,j,2)
+	        t1zi2(i,j,1)=t1zi2(i,j,2)
+	        t2xi2(i,j,1)=t2xi2(i,j,2)
+	        t2zi2(i,j,1)=t2zi2(i,j,2)
+	        t3xi2(i,j,1)=t3xi2(i,j,2)
+	        t3zi2(i,j,1)=t3zi2(i,j,2)
+          t4xi2(i,j,1)=t4xi2(i,j,2)
+          t4zi2(i,j,1)=t4zi2(i,j,2)
+          t5xi2(i,j,1)=t5xi2(i,j,2)
+          t5zi2(i,j,1)=t5zi2(i,j,2)
+        End Do
+      End Do
+      
+      Do j=4,ml                   ! j=ml--->0	  上边界
+        Do i=-ml+4,nx+ml-4
+	        k=ml
+	        if(i.le.0) k=ml+i
+	        if(i.gt.nx) k=nx+ml-i+1
+	        a11=vx(i+1,-ml+j,2)-vx(i,-ml+j,2)
+		      a12=vx(i+2,-ml+j,2)-vx(i-1,-ml+j,2)
+	        a13=vx(i+3,-ml+j,2)-vx(i-2,-ml+j,2)
+	        a14=vx(i+4,-ml+j,2)-vx(i-3,-ml+j,2)
+          d11=vz(i,-ml+j,2)-vz(i-1,-ml+j,2)
+          d12=vz(i+1,-ml+j,2)-vz(i-2,-ml+j,2)
+          d13=vz(i+2,-ml+j,2)-vz(i-3,-ml+j,2)
+          d14=vz(i+3,-ml+j,2)-vz(i-4,-ml+j,2)
+          e11=vy(i+1,-ml+j,2)-vy(i,-ml+j,2)
+          e12=vy(i+2,-ml+j,2)-vy(i-1,-ml+j,2)
+          e13=vy(i+3,-ml+j,2)-vy(i-2,-ml+j,2)
+          e14=vy(i+4,-ml+j,2)-vy(i-3,-ml+j,2)
+	        s1=r1*C(1,1)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(1,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(1,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t1xj1(i,j,1)
+	        t1xj1(i,j,2)=(s1+s2)*qxd(k)
+          
+	        a21=vz(i,-ml+j,2)-vz(i,-ml+j-1,2)
+		      a22=vz(i,-ml+j+1,2)-vz(i,-ml+j-2,2)
+	        a23=vz(i,-ml+j+2,2)-vz(i,-ml+j-3,2)
+	        a24=vz(i,-ml+j+3,2)-vz(i,-ml+j-4,2)
+          d21=vx(i,-ml+j+1,2)-vx(i,-ml+j,2)
+          d22=vx(i,-ml+j+2,2)-vx(i,-ml+j-1,2)
+          d23=vx(i,-ml+j+3,2)-vx(i,-ml+j-2,2)
+          d24=vx(i,-ml+j+4,2)-vx(i,-ml+j-3,2)
+          e21=vy(i,-ml+j+1,2)-vy(i,-ml+j,2)
+          e22=vy(i,-ml+j+2,2)-vy(i,-ml+j-1,2)
+          e23=vy(i,-ml+j+3,2)-vy(i,-ml+j-2,2)
+          e24=vy(i,-ml+j+4,2)-vy(i,-ml+j-3,2)
+	        s1=r2*C(1,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(1,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(1,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=(1.0-0.5*qx(j))*t1zj1(i,j,1) 
+	        t1zj1(i,j,2)=(s1+s2)*qxd(j)
+	        txx(i,-ml+j,2)=t1xj1(i,j,2)+t1zj1(i,j,2)
+          
+	        a11=vx(i+1,-ml+j,2)-vx(i,-ml+j,2)
+		      a12=vx(i+2,-ml+j,2)-vx(i-1,-ml+j,2)
+	        a13=vx(i+3,-ml+j,2)-vx(i-2,-ml+j,2)
+	        a14=vx(i+4,-ml+j,2)-vx(i-3,-ml+j,2)
+          d11=vz(i,-ml+j,2)-vz(i-1,-ml+j,2)
+          d12=vz(i+1,-ml+j,2)-vz(i-2,-ml+j,2)
+          d13=vz(i+2,-ml+j,2)-vz(i-3,-ml+j,2)
+          d14=vz(i+3,-ml+j,2)-vz(i-4,-ml+j,2)
+          e11=vy(i+1,-ml+j,2)-vy(i,-ml+j,2)
+          e12=vy(i+2,-ml+j,2)-vy(i-1,-ml+j,2)
+          e13=vy(i+3,-ml+j,2)-vy(i-2,-ml+j,2)
+          e14=vy(i+4,-ml+j,2)-vy(i-3,-ml+j,2)
+	        s1=r1*C(1,3)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(3,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(3,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+		      s2=(1.0-0.5*qx(k))*t2xj1(i,j,1)
+	        t2xj1(i,j,2)=(s1+s2)*qxd(k)
+          
+	        a21=vz(i,-ml+j,2)-vz(i,-ml+j-1,2)
+		      a22=vz(i,-ml+j+1,2)-vz(i,-ml+j-2,2)
+	        a23=vz(i,-ml+j+2,2)-vz(i,-ml+j-3,2)
+	        a24=vz(i,-ml+j+3,2)-vz(i,-ml+j-4,2)
+          d21=vx(i,-ml+j+1,2)-vx(i,-ml+j,2)
+          d22=vx(i,-ml+j+2,2)-vx(i,-ml+j-1,2)
+          d23=vx(i,-ml+j+3,2)-vx(i,-ml+j-2,2)
+          d24=vx(i,-ml+j+4,2)-vx(i,-ml+j-3,2)
+          e21=vy(i,-ml+j+1,2)-vy(i,-ml+j,2)
+          e22=vy(i,-ml+j+2,2)-vy(i,-ml+j-1,2)
+          e23=vy(i,-ml+j+3,2)-vy(i,-ml+j-2,2)
+          e24=vy(i,-ml+j+4,2)-vy(i,-ml+j-3,2)
+	        s1=r2*C(3,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(3,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(3,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=(1.0-0.5*qx(j))*t2zj1(i,j,1)
+	        t2zj1(i,j,2)=(s1+s2)*qxd(j)
+	        tzz(i,-ml+j,2)=t2xj1(i,j,2)+t2zj1(i,j,2)
+          
+          a11=vx(i+1,-ml+j,2)-vx(i,-ml+j,2)
+          a12=vx(i+2,-ml+j,2)-vx(i-1,-ml+j,2)
+          a13=vx(i+3,-ml+j,2)-vx(i-2,-ml+j,2)
+          a14=vx(i+4,-ml+j,2)-vx(i-3,-ml+j,2)
+	        d11=vz(i,-ml+j,2)-vz(i-1,-ml+j,2)
+		      d12=vz(i+1,-ml+j,2)-vz(i-2,-ml+j,2)
+	        d13=vz(i+2,-ml+j,2)-vz(i-3,-ml+j,2)
+	        d14=vz(i+3,-ml+j,2)-vz(i-4,-ml+j,2)
+          e11=vy(i+1,-ml+j,2)-vy(i,-ml+j,2)
+          e12=vy(i+2,-ml+j,2)-vy(i-1,-ml+j,2)
+          e13=vy(i+3,-ml+j,2)-vy(i-2,-ml+j,2)
+          e14=vy(i+4,-ml+j,2)-vy(i-3,-ml+j,2)
+	        s1=r1*C(1,5)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(5,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t3xj1(i,j,1)
+	        t3xj1(i,j,2)=(s1+s2)*qxd(k)
+	        
+          a21=vz(i,-ml+j,2)-vz(i,-ml+j-1,2)
+          a22=vz(i,-ml+j+1,2)-vz(i,-ml+j-2,2)
+          a23=vz(i,-ml+j+2,2)-vz(i,-ml+j-3,2)
+          a24=vz(i,-ml+j+3,2)-vz(i,-ml+j-4,2)
+	        d21=vx(i,-ml+j+1,2)-vx(i,-ml+j,2)
+		      d22=vx(i,-ml+j+2,2)-vx(i,-ml+j-1,2)
+	        d23=vx(i,-ml+j+3,2)-vx(i,-ml+j-2,2)
+	        d24=vx(i,-ml+j+4,2)-vx(i,-ml+j-3,2)
+          e21=vy(i,-ml+j+1,2)-vy(i,-ml+j,2)
+          e22=vy(i,-ml+j+2,2)-vy(i,-ml+j-1,2)
+          e23=vy(i,-ml+j+3,2)-vy(i,-ml+j-2,2)
+          e24=vy(i,-ml+j+4,2)-vy(i,-ml+j-3,2)
+	        s1=r2*C(3,5)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,5)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=(1.0-0.5*qx(j))*t3zj1(i,j,1)
+	        t3zj1(i,j,2)=(s1+s2)*qxd(j)
+	        txz(i,-ml+j,2)=t3xj1(i,j,2)+t3zj1(i,j,2)
+
+          a11=vx(i+1,-ml+j,2)-vx(i,-ml+j,2)       !txy_x部分
+		      a12=vx(i+2,-ml+j,2)-vx(i-1,-ml+j,2)
+	        a13=vx(i+3,-ml+j,2)-vx(i-2,-ml+j,2)
+	        a14=vx(i+4,-ml+j,2)-vx(i-3,-ml+j,2)
+          d11=vz(i,-ml+j,2)-vz(i-1,-ml+j,2)
+          d12=vz(i+1,-ml+j,2)-vz(i-2,-ml+j,2)
+          d13=vz(i+2,-ml+j,2)-vz(i-3,-ml+j,2)
+          d14=vz(i+3,-ml+j,2)-vz(i-4,-ml+j,2)
+          e11=vy(i+1,-ml+j,2)-vy(i,-ml+j,2)
+          e12=vy(i+2,-ml+j,2)-vy(i-1,-ml+j,2)
+          e13=vy(i+3,-ml+j,2)-vy(i-2,-ml+j,2)
+          e14=vy(i+4,-ml+j,2)-vy(i-3,-ml+j,2)
+	        s1=r1*C(1,6)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,6)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(6,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t4xj1(i,j,1)
+	        t4xj1(i,j,2)=(s1+s2)*qxd(k)
+          
+	        a21=vz(i,-ml+j,2)-vz(i,-ml+j-1,2)       !txy_z部分
+		      a22=vz(i,-ml+j+1,2)-vz(i,-ml+j-2,2)
+	        a23=vz(i,-ml+j+2,2)-vz(i,-ml+j-3,2)
+	        a24=vz(i,-ml+j+3,2)-vz(i,-ml+j-4,2)
+          d21=vx(i,-ml+j+1,2)-vx(i,-ml+j,2)
+          d22=vx(i,-ml+j+2,2)-vx(i,-ml+j-1,2)
+          d23=vx(i,-ml+j+3,2)-vx(i,-ml+j-2,2)
+          d24=vx(i,-ml+j+4,2)-vx(i,-ml+j-3,2)
+          e21=vy(i,-ml+j+1,2)-vy(i,-ml+j,2)
+          e22=vy(i,-ml+j+2,2)-vy(i,-ml+j-1,2)
+          e23=vy(i,-ml+j+3,2)-vy(i,-ml+j-2,2)
+          e24=vy(i,-ml+j+4,2)-vy(i,-ml+j-3,2)
+	        s1=r2*C(3,6)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,6)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,6)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=(1.0-0.5*qx(j))*t4zj1(i,j,1) 
+	        t4zj1(i,j,2)=(s1+s2)*qxd(j)
+	        txy(i,-ml+j,2)=t4xj1(i,j,2)+t4zj1(i,j,2)
+
+          a11=vx(i+1,-ml+j,2)-vx(i,-ml+j,2)       !tyz_x部分
+          a12=vx(i+2,-ml+j,2)-vx(i-1,-ml+j,2)
+          a13=vx(i+3,-ml+j,2)-vx(i-2,-ml+j,2)
+          a14=vx(i+4,-ml+j,2)-vx(i-3,-ml+j,2)
+	        d11=vz(i,-ml+j,2)-vz(i-1,-ml+j,2)
+		      d12=vz(i+1,-ml+j,2)-vz(i-2,-ml+j,2)
+	        d13=vz(i+2,-ml+j,2)-vz(i-3,-ml+j,2)
+	        d14=vz(i+3,-ml+j,2)-vz(i-4,-ml+j,2)
+          e11=vy(i+1,-ml+j,2)-vy(i,-ml+j,2)
+          e12=vy(i+2,-ml+j,2)-vy(i-1,-ml+j,2)
+          e13=vy(i+3,-ml+j,2)-vy(i-2,-ml+j,2)
+          e14=vy(i+4,-ml+j,2)-vy(i-3,-ml+j,2)
+	        s1=r1*C(1,4)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(4,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(4,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t5xj1(i,j,1)
+	        t5xj1(i,j,2)=(s1+s2)*qxd(k)
+	        
+          a21=vz(i,-ml+j,2)-vz(i,-ml+j-1,2)       !tyz_z部分
+          a22=vz(i,-ml+j+1,2)-vz(i,-ml+j-2,2)
+          a23=vz(i,-ml+j+2,2)-vz(i,-ml+j-3,2)
+          a24=vz(i,-ml+j+3,2)-vz(i,-ml+j-4,2)
+	        d21=vx(i,-ml+j+1,2)-vx(i,-ml+j,2)
+		      d22=vx(i,-ml+j+2,2)-vx(i,-ml+j-1,2)
+	        d23=vx(i,-ml+j+3,2)-vx(i,-ml+j-2,2)
+	        d24=vx(i,-ml+j+4,2)-vx(i,-ml+j-3,2)
+          e21=vy(i,-ml+j+1,2)-vy(i,-ml+j,2)
+          e22=vy(i,-ml+j+2,2)-vy(i,-ml+j-1,2)
+          e23=vy(i,-ml+j+3,2)-vy(i,-ml+j-2,2)
+          e24=vy(i,-ml+j+4,2)-vy(i,-ml+j-3,2)
+	        s1=r2*C(3,4)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(4,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+          s2=(1.0-0.5*qx(j))*t5zj1(i,j,1)
+	        t5zj1(i,j,2)=(s1+s2)*qxd(j)
+	        tyz(i,-ml+j,2)=t5xj1(i,j,2)+t5zj1(i,j,2)
+        End Do
+      End Do
+      
+      Do j=1,ml
+        Do i=-ml,nx+ml
+	        t1xj1(i,j,1)=t1xj1(i,j,2)
+	        t1zj1(i,j,1)=t1zj1(i,j,2)
+	        t2xj1(i,j,1)=t2xj1(i,j,2)
+	        t2zj1(i,j,1)=t2zj1(i,j,2)
+	        t3xj1(i,j,1)=t3xj1(i,j,2)
+	        t3zj1(i,j,1)=t3zj1(i,j,2)
+          t4xj1(i,j,1)=t4xj1(i,j,2)
+          t4zj1(i,j,1)=t4zj1(i,j,2)
+          t5xj1(i,j,1)=t5xj1(i,j,2)
+          t5zj1(i,j,1)=t5zj1(i,j,2)
+        End Do
+      End Do
+      
+      nz1=nz+ml+1
+      Do j=ml,5,-1                ! j=ml--->nz+1 下边界
+        Do i=-ml+4,nx+ml-4
+	        k=ml
+	        if(i.le.0) k=ml+i
+	        if(i.gt.nx) k=nx+ml-i+1
+	        a11=vx(i+1,nz1-j,2)-vx(i,nz1-j,2)
+		      a12=vx(i+2,nz1-j,2)-vx(i-1,nz1-j,2)
+	        a13=vx(i+3,nz1-j,2)-vx(i-2,nz1-j,2)
+	        a14=vx(i+4,nz1-j,2)-vx(i-3,nz1-j,2)
+          d11=vz(i,nz1-j,2)-vz(i-1,nz1-j,2)
+          d12=vz(i+1,nz1-j,2)-vz(i-2,nz1-j,2)
+          d13=vz(i+2,nz1-j,2)-vz(i-3,nz1-j,2)
+          d14=vz(i+3,nz1-j,2)-vz(i-4,nz1-j,2)
+          e11=vy(i+1,nz1-j,2)-vy(i,nz1-j,2)
+          e12=vy(i+2,nz1-j,2)-vy(i-1,nz1-j,2)
+          e13=vy(i+3,nz1-j,2)-vy(i-2,nz1-j,2)
+          e14=vy(i+4,nz1-j,2)-vy(i-3,nz1-j,2)
+	        s1=r1*C(1,1)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(1,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(1,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t1xj2(i,j,1)
+	        t1xj2(i,j,2)=(s1+s2)*qxd(k)
+         
+	        a21=vz(i,nz1-j,2)-vz(i,nz1-j-1,2)
+		      a22=vz(i,nz1-j+1,2)-vz(i,nz1-j-2,2)
+	        a23=vz(i,nz1-j+2,2)-vz(i,nz1-j-3,2)
+	        a24=vz(i,nz1-j+3,2)-vz(i,nz1-j-4,2)
+          d21=vx(i,nz1-j+1,2)-vx(i,nz1-j,2)
+          d22=vx(i,nz1-j+2,2)-vx(i,nz1-j-1,2)
+          d23=vx(i,nz1-j+3,2)-vx(i,nz1-j-2,2)
+          d24=vx(i,nz1-j+4,2)-vx(i,nz1-j-3,2)
+          e21=vy(i,nz1-j+1,2)-vy(i,nz1-j,2)
+          e22=vy(i,nz1-j+2,2)-vy(i,nz1-j-1,2)
+          e23=vy(i,nz1-j+3,2)-vy(i,nz1-j-2,2)
+          e24=vy(i,nz1-j+4,2)-vy(i,nz1-j-3,2)
+	        s1=r2*C(1,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(1,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(1,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=(1.0-0.5*qx(j))*t1zj2(i,j,1) 
+	        t1zj2(i,j,2)=(s1+s2)*qxd(j)
+	        txx(i,nz1-j,2)=t1xj2(i,j,2)+t1zj2(i,j,2)
+         
+	        a11=vx(i+1,nz1-j,2)-vx(i,nz1-j,2)
+		      a12=vx(i+2,nz1-j,2)-vx(i-1,nz1-j,2)
+	        a13=vx(i+3,nz1-j,2)-vx(i-2,nz1-j,2)
+	        a14=vx(i+4,nz1-j,2)-vx(i-3,nz1-j,2)
+          d11=vz(i,nz1-j,2)-vz(i-1,nz1-j,2)
+          d12=vz(i+1,nz1-j,2)-vz(i-2,nz1-j,2)
+          d13=vz(i+2,nz1-j,2)-vz(i-3,nz1-j,2)
+          d14=vz(i+3,nz1-j,2)-vz(i-4,nz1-j,2)
+          e11=vy(i+1,nz1-j,2)-vy(i,nz1-j,2)
+          e12=vy(i+2,nz1-j,2)-vy(i-1,nz1-j,2)
+          e13=vy(i+3,nz1-j,2)-vy(i-2,nz1-j,2)
+          e14=vy(i+4,nz1-j,2)-vy(i-3,nz1-j,2)
+	        s1=r1*C(1,3)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(3,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(3,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+		      s2=(1.0-0.5*qx(k))*t2xj2(i,j,1)
+	        t2xj2(i,j,2)=(s1+s2)*qxd(k)
+         
+	        a21=vz(i,nz1-j,2)-vz(i,nz1-j-1,2)
+		      a22=vz(i,nz1-j+1,2)-vz(i,nz1-j-2,2)
+	        a23=vz(i,nz1-j+2,2)-vz(i,nz1-j-3,2)
+	        a24=vz(i,nz1-j+3,2)-vz(i,nz1-j-4,2)
+          d21=vx(i,nz1-j+1,2)-vx(i,nz1-j,2)
+          d22=vx(i,nz1-j+2,2)-vx(i,nz1-j-1,2)
+          d23=vx(i,nz1-j+3,2)-vx(i,nz1-j-2,2)
+          d24=vx(i,nz1-j+4,2)-vx(i,nz1-j-3,2)
+          e21=vy(i,nz1-j+1,2)-vy(i,nz1-j,2)
+          e22=vy(i,nz1-j+2,2)-vy(i,nz1-j-1,2)
+          e23=vy(i,nz1-j+3,2)-vy(i,nz1-j-2,2)
+          e24=vy(i,nz1-j+4,2)-vy(i,nz1-j-3,2)
+	        s1=r2*C(3,3)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(3,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(3,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=(1.0-0.5*qx(j))*t2zj2(i,j,1)
+	        t2zj2(i,j,2)=(s1+s2)*qxd(j)
+	        tzz(i,nz1-j,2)=t2xj2(i,j,2)+t2zj2(i,j,2)
+         
+          a11=vx(i+1,nz1-j,2)-vx(i,nz1-j,2)
+          a12=vx(i+2,nz1-j,2)-vx(i-1,nz1-j,2)
+          a13=vx(i+3,nz1-j,2)-vx(i-2,nz1-j,2)
+          a14=vx(i+4,nz1-j,2)-vx(i-3,nz1-j,2)
+	        d11=vz(i,nz1-j,2)-vz(i-1,nz1-j,2)
+		      d12=vz(i+1,nz1-j,2)-vz(i-2,nz1-j,2)
+	        d13=vz(i+2,nz1-j,2)-vz(i-3,nz1-j,2)
+	        d14=vz(i+3,nz1-j,2)-vz(i-4,nz1-j,2)
+          e11=vy(i+1,nz1-j,2)-vy(i,nz1-j,2)
+          e12=vy(i+2,nz1-j,2)-vy(i-1,nz1-j,2)
+          e13=vy(i+3,nz1-j,2)-vy(i-2,nz1-j,2)
+          e14=vy(i+4,nz1-j,2)-vy(i-3,nz1-j,2)
+	        s1=r1*C(1,5)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(5,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t3xj2(i,j,1)
+	        t3xj2(i,j,2)=(s1+s2)*qxd(k)
+	       
+          a21=vz(i,nz1-j,2)-vz(i,nz1-j-1,2)
+          a22=vz(i,nz1-j+1,2)-vz(i,nz1-j-2,2)
+          a23=vz(i,nz1-j+2,2)-vz(i,nz1-j-3,2)
+          a24=vz(i,nz1-j+3,2)-vz(i,nz1-j-4,2)
+	        d21=vx(i,nz1-j+1,2)-vx(i,nz1-j,2)
+		      d22=vx(i,nz1-j+2,2)-vx(i,nz1-j-1,2)
+	        d23=vx(i,nz1-j+3,2)-vx(i,nz1-j-2,2)
+	        d24=vx(i,nz1-j+4,2)-vx(i,nz1-j-3,2)
+          e21=vy(i,nz1-j+1,2)-vy(i,nz1-j,2)
+          e22=vy(i,nz1-j+2,2)-vy(i,nz1-j-1,2)
+          e23=vy(i,nz1-j+3,2)-vy(i,nz1-j-2,2)
+          e24=vy(i,nz1-j+4,2)-vy(i,nz1-j-3,2)
+	        s1=r2*C(3,5)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,5)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=(1.0-0.5*qx(j))*t3zj2(i,j,1)
+	        t3zj2(i,j,2)=(s1+s2)*qxd(j)
+	        txz(i,nz1-j,2)=t3xj2(i,j,2)+t3zj2(i,j,2)
+
+          a11=vx(i+1,nz1-j,2)-vx(i,nz1-j,2)       !txy_x部分
+		      a12=vx(i+2,nz1-j,2)-vx(i-1,nz1-j,2)
+	        a13=vx(i+3,nz1-j,2)-vx(i-2,nz1-j,2)
+	        a14=vx(i+4,nz1-j,2)-vx(i-3,nz1-j,2)
+          d11=vz(i,nz1-j,2)-vz(i-1,nz1-j,2)
+          d12=vz(i+1,nz1-j,2)-vz(i-2,nz1-j,2)
+          d13=vz(i+2,nz1-j,2)-vz(i-3,nz1-j,2)
+          d14=vz(i+3,nz1-j,2)-vz(i-4,nz1-j,2)
+          e11=vy(i+1,nz1-j,2)-vy(i,nz1-j,2)
+          e12=vy(i+2,nz1-j,2)-vy(i-1,nz1-j,2)
+          e13=vy(i+3,nz1-j,2)-vy(i-2,nz1-j,2)
+          e14=vy(i+4,nz1-j,2)-vy(i-3,nz1-j,2)
+	        s1=r1*C(1,6)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(5,6)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(6,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t4xj2(i,j,1)
+	        t4xj2(i,j,2)=(s1+s2)*qxd(k)
+         
+	        a21=vz(i,nz1-j,2)-vz(i,nz1-j-1,2)       !txy_z部分
+		      a22=vz(i,nz1-j+1,2)-vz(i,nz1-j-2,2)
+	        a23=vz(i,nz1-j+2,2)-vz(i,nz1-j-3,2)
+	        a24=vz(i,nz1-j+3,2)-vz(i,nz1-j-4,2)
+          d21=vx(i,nz1-j+1,2)-vx(i,nz1-j,2)
+          d22=vx(i,nz1-j+2,2)-vx(i,nz1-j-1,2)
+          d23=vx(i,nz1-j+3,2)-vx(i,nz1-j-2,2)
+          d24=vx(i,nz1-j+4,2)-vx(i,nz1-j-3,2)
+          e21=vy(i,nz1-j+1,2)-vy(i,nz1-j,2)
+          e22=vy(i,nz1-j+2,2)-vy(i,nz1-j-1,2)
+          e23=vy(i,nz1-j+3,2)-vy(i,nz1-j-2,2)
+          e24=vy(i,nz1-j+4,2)-vy(i,nz1-j-3,2)
+	        s1=r2*C(3,6)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(5,6)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,6)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=(1.0-0.5*qx(j))*t4zj2(i,j,1) 
+	        t4zj2(i,j,2)=(s1+s2)*qxd(j)
+	        txy(i,nz1-j,2)=t4xj2(i,j,2)+t4zj2(i,j,2)
+  
+          a11=vx(i+1,nz1-j,2)-vx(i,nz1-j,2)       !tyz_x部分
+          a12=vx(i+2,nz1-j,2)-vx(i-1,nz1-j,2)
+          a13=vx(i+3,nz1-j,2)-vx(i-2,nz1-j,2)
+          a14=vx(i+4,nz1-j,2)-vx(i-3,nz1-j,2)
+	        d11=vz(i,nz1-j,2)-vz(i-1,nz1-j,2)
+		      d12=vz(i+1,nz1-j,2)-vz(i-2,nz1-j,2)
+	        d13=vz(i+2,nz1-j,2)-vz(i-3,nz1-j,2)
+	        d14=vz(i+3,nz1-j,2)-vz(i-4,nz1-j,2)
+          e11=vy(i+1,nz1-j,2)-vy(i,nz1-j,2)
+          e12=vy(i+2,nz1-j,2)-vy(i-1,nz1-j,2)
+          e13=vy(i+3,nz1-j,2)-vy(i-2,nz1-j,2)
+          e14=vy(i+4,nz1-j,2)-vy(i-3,nz1-j,2)
+	        s1=r1*C(1,4)*(ef1*a11-ef2*a12+ef3*a13-ef4*a14)+&
+             r1*C(4,5)*(ef1*d11-ef2*d12+ef3*d13-ef4*d14)+&
+             r1*C(4,6)*(ef1*e11-ef2*e12+ef3*e13-ef4*e14)
+	        s2=(1.0-0.5*qx(k))*t5xj2(i,j,1)
+	        t5xj2(i,j,2)=(s1+s2)*qxd(k)
+	       
+          a21=vz(i,nz1-j,2)-vz(i,nz1-j-1,2)       !tyz_z部分
+          a22=vz(i,nz1-j+1,2)-vz(i,nz1-j-2,2)
+          a23=vz(i,nz1-j+2,2)-vz(i,nz1-j-3,2)
+          a24=vz(i,nz1-j+3,2)-vz(i,nz1-j-4,2)
+	        d21=vx(i,nz1-j+1,2)-vx(i,nz1-j,2)
+		      d22=vx(i,nz1-j+2,2)-vx(i,nz1-j-1,2)
+	        d23=vx(i,nz1-j+3,2)-vx(i,nz1-j-2,2)
+	        d24=vx(i,nz1-j+4,2)-vx(i,nz1-j-3,2)
+          e21=vy(i,nz1-j+1,2)-vy(i,nz1-j,2)
+          e22=vy(i,nz1-j+2,2)-vy(i,nz1-j-1,2)
+          e23=vy(i,nz1-j+3,2)-vy(i,nz1-j-2,2)
+          e24=vy(i,nz1-j+4,2)-vy(i,nz1-j-3,2)
+	        s1=r2*C(3,4)*(ef1*a21-ef2*a22+ef3*a23-ef4*a24)+&
+             r2*C(4,5)*(ef1*d21-ef2*d22+ef3*d23-ef4*d24)+&
+             r2*C(4,4)*(ef1*e21-ef2*e22+ef3*e23-ef4*e24)
+	        s2=(1.0-0.5*qx(j))*t5zj2(i,j,1)
+	        t5zj2(i,j,2)=(s1+s2)*qxd(j)
+	        tyz(i,nz1-j,2)=t5xj2(i,j,2)+t5zj2(i,j,2) 
+        End Do
+      End Do
+      
+      Do j=1,ml
+        Do i=-ml,nx+ml
+	        t1xj2(i,j,1)=t1xj2(i,j,2)
+	        t1zj2(i,j,1)=t1zj2(i,j,2)
+	        t2xj2(i,j,1)=t2xj2(i,j,2)
+	        t2zj2(i,j,1)=t2zj2(i,j,2)
+	        t3xj2(i,j,1)=t3xj2(i,j,2)
+	        t3zj2(i,j,1)=t3zj2(i,j,2)
+          t4xj2(i,j,1)=t4xj2(i,j,2)
+          t4zj2(i,j,1)=t4zj2(i,j,2)
+          t5xj2(i,j,1)=t5xj2(i,j,2)
+          t5zj2(i,j,1)=t5zj2(i,j,2)
+        End Do
+      End Do
