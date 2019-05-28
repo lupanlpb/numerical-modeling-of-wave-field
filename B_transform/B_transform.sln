@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "B_transform", "B_transform\B_transform.vfproj", "{0C48AA28-A060-4435-ABA8-1F5498109860}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C48AA28-A060-4435-ABA8-1F5498109860}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0C48AA28-A060-4435-ABA8-1F5498109860}.Debug|Win32.Build.0 = Debug|Win32
+		{0C48AA28-A060-4435-ABA8-1F5498109860}.Release|Win32.ActiveCfg = Release|Win32
+		{0C48AA28-A060-4435-ABA8-1F5498109860}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
