@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "2D2_SSG_TTI", "2D2_SSG_TTI\2D2_SSG_TTI.vfproj", "{BCE22FE3-4A59-4800-B016-E19C9FCCBAFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCE22FE3-4A59-4800-B016-E19C9FCCBAFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BCE22FE3-4A59-4800-B016-E19C9FCCBAFF}.Debug|Win32.Build.0 = Debug|Win32
+		{BCE22FE3-4A59-4800-B016-E19C9FCCBAFF}.Release|Win32.ActiveCfg = Release|Win32
+		{BCE22FE3-4A59-4800-B016-E19C9FCCBAFF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
