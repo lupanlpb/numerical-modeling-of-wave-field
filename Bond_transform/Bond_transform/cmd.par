@@ -1,0 +1,7 @@
+c11-----c13-----c33-----c55-----c66-----
+52.2E+9	12.3E+9	30.9E+9	9.83E+9	15.1E+9
+2000		!density
+60		!Theta
+45		!Phi
+input_c_VTI.dat
+output_c_TTI.dat
