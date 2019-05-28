@@ -1,0 +1,13 @@
+ seismogramy001.dat
+ seismogramy002.dat
+ seismogramy003.dat
+ seismogramy004.dat
+ seismogramy005.dat
+ seismogramy006.dat
+ seismogramy007.dat
+ seismogramy008.dat
+ seismogramy009.dat
+ seismogramy010.dat
+ seismogramy011.dat
+ seismogramy012.dat
+ seismogramy013.dat
