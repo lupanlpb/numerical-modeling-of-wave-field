@@ -1,0 +1,12 @@
+        !COMPILER-GENERATED INTERFACE MODULE: Wed Apr 26 20:06:21 2017
+        MODULE READ_DATA__genmod
+          INTERFACE 
+            SUBROUTINE READ_DATA(N_FILE,NLINE,SEISMOGRAM,TIME,V)
+              INTEGER(KIND=4) :: NLINE
+              INTEGER(KIND=4) :: N_FILE
+              CHARACTER(*) :: SEISMOGRAM(1:N_FILE)
+              REAL(KIND=4) :: TIME(1:NLINE,1:N_FILE)
+              REAL(KIND=4) :: V(1:NLINE,1:N_FILE)
+            END SUBROUTINE READ_DATA
+          END INTERFACE 
+        END MODULE READ_DATA__genmod
