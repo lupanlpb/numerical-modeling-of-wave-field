@@ -1,0 +1,93 @@
+nz1=nz+ml+1
+      Do j=ml,5,-1                ! j=ml--->nz+1 об╠ъ╫Г
+        Do i=-ml+4,nx+ml-4
+	        k=ml
+	        if(i.le.0) k=ml+i
+	        if(i.gt.nx) k=nx+ml-i+1
+	        a11=vx(i+1,nz1-j+1,2)-vx(i,nz1-j,2)
+          a12=vx(i+2,nz1-j+2,2)-vx(i-1,nz1-j-1,2)
+          a13=vx(i+3,nz1-j+3,2)-vx(i-2,nz1-j-2,2)
+          a14=vx(i+4,nz1-j+4,2)-vx(i-3,nz1-j-3,2)
+          a21=vx(i+1,nz1-j,2)-vx(i,nz1-j+1,2)
+          a22=vx(i+2,nz1-j-1,2)-vx(i-1,nz1-j+2,2)
+          a23=vx(i+3,nz1-j-2,2)-vx(i-2,nz1-j+3,2)
+          a24=vx(i+4,nz1-j-3,2)-vx(i-3,nz1-j+4,2)
+	        s1=r1*c11(i,nz1-j)*((ef1*a11-ef2*a12+ef3*a13-ef4*a14)+(ef1*a21-ef2*a22+ef3*a23-ef4*a24))
+	        s2=(1.0-0.5*qx(k))*t1xj2(i,j,1)
+	        t1xj2(i,j,2)=(s1+s2)*qxd(k)
+            
+	        b11=vz(i+1,nz1-j+1,2)-vz(i,nz1-j,2)
+          b12=vz(i+2,nz1-j+2,2)-vz(i-1,nz1-j-1,2)
+          b13=vz(i+3,nz1-j+3,2)-vz(i-2,nz1-j-2,2)
+          b14=vz(i+4,nz1-j+4,2)-vz(i-3,nz1-j-3,2)
+          b21=vz(i+1,nz1-j,2)-vz(i,nz1-j+1,2)
+          b22=vz(i+2,nz1-j-1,2)-vz(i-1,nz1-j+2,2)
+          b23=vz(i+3,nz1-j-2,2)-vz(i-2,nz1-j+3,2)
+          b24=vz(i+4,nz1-j-3,2)-vz(i-3,nz1-j+4,2)
+	        s1=r2*c13(i,nz1-j)*((ef1*b11-ef2*b12+ef3*b13-ef4*b14)-(ef1*b21-ef2*b22+ef3*b23-ef4*b24))
+          s2=(1.0-0.5*qx(j))*t1zj2(i,j,1) 
+	        t1zj2(i,j,2)=(s1+s2)*qxd(j)
+	        txx(i,nz1-j,2)=t1xj2(i,j,2)+t1zj2(i,j,2)
+            
+	        a11=vx(i+1,nz1-j+1,2)-vx(i,nz1-j,2)
+          a12=vx(i+2,nz1-j+2,2)-vx(i-1,nz1-j-1,2)
+          a13=vx(i+3,nz1-j+3,2)-vx(i-2,nz1-j-2,2)
+          a14=vx(i+4,nz1-j+4,2)-vx(i-3,nz1-j-3,2)
+          a21=vx(i+1,nz1-j,2)-vx(i,nz1-j+1,2)
+          a22=vx(i+2,nz1-j-1,2)-vx(i-1,nz1-j+2,2)
+          a23=vx(i+3,nz1-j-2,2)-vx(i-2,nz1-j+3,2)
+          a24=vx(i+4,nz1-j-3,2)-vx(i-3,nz1-j+4,2)
+	        s1=r1*c13(i,nz1-j)*((ef1*a11-ef2*a12+ef3*a13-ef4*a14)+(ef1*a21-ef2*a22+ef3*a23-ef4*a24))
+          s2=(1.0-0.5*qx(k))*t2xj2(i,j,1)
+	        t2xj2(i,j,2)=(s1+s2)*qxd(k)
+            
+	        b11=vz(i+1,nz1-j+1,2)-vz(i,nz1-j,2)
+          b12=vz(i+2,nz1-j+2,2)-vz(i-1,nz1-j-1,2)
+          b13=vz(i+3,nz1-j+3,2)-vz(i-2,nz1-j-2,2)
+          b14=vz(i+4,nz1-j+4,2)-vz(i-3,nz1-j-3,2)
+          b21=vz(i+1,nz1-j,2)-vz(i,nz1-j+1,2)
+          b22=vz(i+2,nz1-j-1,2)-vz(i-1,nz1-j+2,2)
+          b23=vz(i+3,nz1-j-2,2)-vz(i-2,nz1-j+3,2)
+          b24=vz(i+4,nz1-j-3,2)-vz(i-3,nz1-j+4,2)
+	        s1=r2*c33(i,nz1-j)*((ef1*b11-ef2*b12+ef3*b13-ef4*b14)-(ef1*b21-ef2*b22+ef3*b23-ef4*b24))
+          s2=(1.0-0.5*qx(j))*t2zj2(i,j,1)
+	        t2zj2(i,j,2)=(s1+s2)*qxd(j)
+	        tzz(i,nz1-j,2)=t2xj2(i,j,2)+t2zj2(i,j,2)
+            
+	        d11=vz(i+1,nz1-j+1,2)-vz(i,nz1-j,2)
+          d12=vz(i+2,nz1-j+2,2)-vz(i-1,nz1-j-1,2)
+          d13=vz(i+3,nz1-j+3,2)-vz(i-2,nz1-j-2,2)
+          d14=vz(i+4,nz1-j+4,2)-vz(i-3,nz1-j-3,2)
+          d21=vz(i+1,nz1-j,2)-vz(i,nz1-j+1,2)
+          d22=vz(i+2,nz1-j-1,2)-vz(i-1,nz1-j+2,2)
+          d23=vz(i+3,nz1-j-2,2)-vz(i-2,nz1-j+3,2)
+          d24=vz(i+4,nz1-j-3,2)-vz(i-3,nz1-j+4,2)
+	        s1=r1*c44(i,nz1-j)*((ef1*d11-ef2*d12+ef3*d13-ef4*d14)+(ef1*d21-ef2*d22+ef3*d23-ef4*d24))
+	        s2=(1.0-0.5*qx(k))*t3xj2(i,j,1)
+	        t3xj2(i,j,2)=(s1+s2)*qxd(k)
+	        
+	        e11=vx(i+1,nz1-j+1,2)-vx(i,nz1-j,2)
+          e12=vx(i+2,nz1-j+2,2)-vx(i-1,nz1-j-1,2)
+          e13=vx(i+3,nz1-j+3,2)-vx(i-2,nz1-j-2,2)
+          e14=vx(i+4,nz1-j+4,2)-vx(i-3,nz1-j-3,2)
+          e21=vx(i+1,nz1-j,2)-vx(i,nz1-j+1,2)
+          e22=vx(i+2,nz1-j-1,2)-vx(i-1,nz1-j+2,2)
+          e23=vx(i+3,nz1-j-2,2)-vx(i-2,nz1-j+3,2)
+          e24=vx(i+4,nz1-j-3,2)-vx(i-3,nz1-j+4,2)
+	        s1=r2*c44(i,nz1-j)*((ef1*e11-ef2*e12+ef3*e13-ef4*e14)-(ef1*e21-ef2*e22+ef3*e23-ef4*e24))
+          s2=(1.0-0.5*qx(j))*t3zj2(i,j,1)
+	        t3zj2(i,j,2)=(s1+s2)*qxd(j)
+	        txz(i,nz1-j,2)=t3xj2(i,j,2)+t3zj2(i,j,2)
+        End Do
+      End Do
+      
+      Do j=1,ml
+        Do i=-ml,nx+ml
+	        t1xj2(i,j,1)=t1xj2(i,j,2)
+	        t1zj2(i,j,1)=t1zj2(i,j,2)
+	        t2xj2(i,j,1)=t2xj2(i,j,2)
+	        t2zj2(i,j,1)=t2zj2(i,j,2)
+	        t3xj2(i,j,1)=t3xj2(i,j,2)
+	        t3zj2(i,j,1)=t3zj2(i,j,2)
+        End Do
+      End Do

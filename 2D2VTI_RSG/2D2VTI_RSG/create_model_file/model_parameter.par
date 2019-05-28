@@ -1,0 +1,5 @@
+0.0   500.0  0.0  500.0	    !xmin xmax,zmin zmax
+2.0 2.0             	    !delt_x,delt_z,delt_h
+modelpar.dat		    !模型参数文件
+
+
