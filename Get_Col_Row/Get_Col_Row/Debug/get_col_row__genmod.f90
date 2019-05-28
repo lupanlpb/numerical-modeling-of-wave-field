@@ -1,0 +1,9 @@
+        !COMPILER-GENERATED INTERFACE MODULE: Fri Apr 28 15:43:11 2017
+        MODULE GET_COL_ROW__genmod
+          INTERFACE 
+            SUBROUTINE GET_COL_ROW(ROW,COLUMN)
+              INTEGER(KIND=4) :: ROW
+              INTEGER(KIND=4) :: COLUMN
+            END SUBROUTINE GET_COL_ROW
+          END INTERFACE 
+        END MODULE GET_COL_ROW__genmod

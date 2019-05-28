@@ -1,0 +1,12 @@
+        !COMPILER-GENERATED INTERFACE MODULE: Fri Apr 28 15:43:11 2017
+        MODULE READ_DATA__genmod
+          INTERFACE 
+            SUBROUTINE READ_DATA(READFILE,ROW,COLUMN,NAME,DAT)
+              INTEGER(KIND=4) :: COLUMN
+              INTEGER(KIND=4) :: ROW
+              CHARACTER(*) :: READFILE
+              CHARACTER(LEN=6) :: NAME(1:COLUMN)
+              REAL(KIND=4) :: DAT(1:ROW,1:COLUMN)
+            END SUBROUTINE READ_DATA
+          END INTERFACE 
+        END MODULE READ_DATA__genmod
