@@ -1,0 +1,24 @@
+0.0   500.0  0.0  500.0	    !xmin xmax,zmin zmax
+50.0  2.0 2.0 2.0           !dep---PML吸收边界 (吸收边界厚度)delt_x,delt_z,delt_h
+0.001			    !反射系数r0
+150      0  500             !gez,gx1,gx2  （检波器排列位置）
+60.0     0.006              !fre_wavelet（震源子波频率）,delay_source_t0（震源加载延迟时间） 
+8000                        !nt（采样次数）
+0.00005                     !delt_t（采样时间间隔/秒）  
+1                           !n_source（震源个数）
+source.dat                  !x_coordinate_source,z_coordinate_source（从该文件读取震源位置）
+modelpar.dat		    !模型参数文件
+snapx.sgy		    !波场快照x分量文件
+snapz.sgy		    !波场快照z分量文件
+seismic_recordx.sgy         !地震记录x分量文件
+seismic_recordz.sgy         !地震记录z分量文件
+
+
+
+
+
+
+
+
+
+
