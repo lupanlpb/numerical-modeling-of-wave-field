@@ -1,0 +1,16 @@
+      If(j<=100) Then
+        vp(i,j)=3000
+        vs(i,j)=vp(i,j)/2.0
+        density(i,j)=2.2
+        Write(11,*) (i-1)*delt_x,(j-1)*delt_z,vp(i,j),vs(i,j),density(i,j)
+      Else If(100<j.and.j<=200) Then
+        vp(i,j)=3500
+        vs(i,j)=vp(i,j)/2.0
+        density(i,j)=2.4
+        Write(11,*) (i-1)*delt_x,(j-1)*delt_z,vp(i,j),vs(i,j),density(i,j)
+      Else
+        vp(i,j)=4000
+        vs(i,j)=vp(i,j)/2.0
+        density(i,j)=2.6
+        Write(11,*) (i-1)*delt_x,(j-1)*delt_z,vp(i,j),vs(i,j),density(i,j)
+      End If
